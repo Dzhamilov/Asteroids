@@ -59,6 +59,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -72,6 +73,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\meteorBrown_big1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\meteorBrown_big2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\meteorBrown_big3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\meteorBrown_big4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\planet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\star1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\star2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\star3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\back1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,7 +46,9 @@ namespace Asteroids
         public static void Draw()
         {
             Buffer.Graphics.Clear(Color.Black);
-            Buffer.Graphics.FillEllipse(Brushes.LightGoldenrodYellow, new Rectangle(500, 70, 150, 150));
+            Buffer.Graphics.DrawImage(Properties.Resources.back1, new Rectangle(0, 0, Width, Height));
+            Buffer.Graphics.DrawImage(Properties.Resources._2, new Rectangle(500, 70, 200, 200));
+            
 
             foreach (Asteroid asteroid in _asteroids)
                 asteroid.Draw();
@@ -61,17 +63,17 @@ namespace Asteroids
         {
             var random = new Random();
 
-            _asteroids = new Asteroid[20];
+            _asteroids = new Asteroid[22];
             for (int i = 0; i < _asteroids.Length; i++)
             {
-                var size = random.Next(5, 20);
+                var size = random.Next(10, 40);
                 _asteroids[i] = new Asteroid(new Point(0, i * 10 + 5), new Point(-i - 2, -i - 2), new Size(size, size));
             }
 
             _stars = new Asteroid[20];
             for (int i = 0; i < _stars.Length; i++)
             {
-                _stars[i] = new Star(new Point(600, i * 25 + 15), new Point(-i - 3, -i - 3), new Size(4, 3));
+                _stars[i] = new Star(new Point(600, i * 15 + 1), new Point(-i - 1, -i - 1), new Size(10, 10));
             }
         }
 
