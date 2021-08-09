@@ -47,9 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asteroid.cs" />
+    <Compile Include="BaseObject.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="ICollision.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ship.cs" />
     <Compile Include="Star.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,21 +79,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Картинки\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Картинки\meteorBrown_big1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Картинки\meteorBrown_big2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Картинки\meteorBrown_big3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Картинки\meteorBrown_big4.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\Картинки\planet.png" />
   </ItemGroup>
   <ItemGroup>
@@ -102,13 +91,31 @@
     <None Include="Properties\Картинки\star3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Картинки\back.png" />
+    <None Include="Properties\Картинки\ship.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Картинки\back1.png" />
+    <None Include="Properties\Картинки\laserRed011.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Картинки\2.png" />
+    <None Include="Properties\Картинки\planeta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\sky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\ski.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\asteroid01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\asteroid02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\asteroid03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Картинки\asteroid04.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

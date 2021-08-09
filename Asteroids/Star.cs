@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Asteroids
 {
-    class Star : Asteroid
+    class Star : BaseObject
     {
-        public Star(Point pos, Point dir, Size size) : base(pos, dir, size)
-        {
-        }
+        public Star(Point pos, Point dir, Size size) : base(pos, dir, size){}
 
         public override void Draw()
         {

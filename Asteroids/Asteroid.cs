@@ -7,26 +7,36 @@ using System.Threading.Tasks;
 
 namespace Asteroids
 {
-    class Asteroid
+    class Asteroid : BaseObject
     {
-        protected Point Pos;
-        protected Point Dir;
-        protected Size Size;
 
-
-        public Asteroid(Point pos, Point dir, Size size)
+        private int index;
+        Random r = new Random();
+        public Asteroid(Point pos, Point dir, Size size) : base(pos, dir, size)
         {
-            Pos = pos;
-            Dir = dir;
-            Size = size;
+
+            index = r.Next(1, 5);
+        }
+        public override void Draw()
+        {
+            switch (index)
+            {
+                case 1:
+                    Game.Buffer.Graphics.DrawImage(Properties.Resources.asteroid01, Pos.X, Pos.Y, Size.Width, Size.Height);
+                    break;
+                case 2:
+                    Game.Buffer.Graphics.DrawImage(Properties.Resources.asteroid02, Pos.X, Pos.Y, Size.Width, Size.Height);
+                    break;
+                case 3:
+                    Game.Buffer.Graphics.DrawImage(Properties.Resources.asteroid03, Pos.X, Pos.Y, Size.Width, Size.Height);
+                    break;
+                case 4:
+                    Game.Buffer.Graphics.DrawImage(Properties.Resources.asteroid04, Pos.X, Pos.Y, Size.Width, Size.Height);
+                    break;
+            }
         }
 
-        public virtual void Draw()
-        {
-            Game.Buffer.Graphics.DrawImage(Properties.Resources.meteorBrown_big1, Pos.X, Pos.Y, Size.Width, Size.Height);
-        }
-
-        public virtual void Update()
+        public override void Update()
         {
             Pos.X = Pos.X + Dir.X;
             Pos.Y = Pos.Y + Dir.Y;
