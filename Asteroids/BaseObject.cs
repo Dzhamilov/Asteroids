@@ -30,16 +30,26 @@ namespace Asteroids
             return obj.Rect.IntersectsWith(Rect);
         }
 
+        //public virtual void Update()
+        //{
+        //    Pos.X = Pos.X + Dir.X;
+        //    Pos.Y = Pos.Y + Dir.Y;
+
+        //    if (Pos.X < 0) Dir.X = -Dir.X;
+        //    if (Pos.X > Game.Width) Dir.X = -Dir.X;
+
+        //    if (Pos.Y < 0) Dir.Y = -Dir.Y;
+        //    if (Pos.Y > Game.Height) Dir.Y = -Dir.Y;
+        //}
+
         public virtual void Update()
         {
-            Pos.X = Pos.X + Dir.X;
-            Pos.Y = Pos.Y + Dir.Y;
+            DoProcess();
+        }
 
-            if (Pos.X < 0) Dir.X = -Dir.X;
-            if (Pos.X > Game.Width) Dir.X = -Dir.X;
+        private void DoProcess()
+        {
 
-            if (Pos.Y < 0) Dir.Y = -Dir.Y;
-            if (Pos.Y > Game.Height) Dir.Y = -Dir.Y;
         }
     }
 }

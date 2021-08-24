@@ -30,10 +30,7 @@ namespace Asteroids
             Game.Buffer.Graphics.DrawImage(Resources.ship, Pos.X, Pos.Y, Size.Width, Size.Height);
         }
 
-        public override void Update()
-        {
-            base.Update();
-        }
+        public override void Update() { }
 
         public void Up()
         {
