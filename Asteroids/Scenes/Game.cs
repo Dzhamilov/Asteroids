@@ -15,9 +15,9 @@ namespace Asteroids
         //private static BufferedGraphicsContext _context;
         //public static BufferedGraphics Buffer;
 
-        private BaseObject[] _asteroids;
+        private List<BaseObject> _asteroids = new List<BaseObject>();
         private BaseObject[] _stars;
-        private Bullet _bullet;
+        private List<Bullet> _bullets = new List<Bullet>();
         private Ship _ship;
         private Timer _timer;
         private Random random = new Random();
@@ -45,7 +45,7 @@ namespace Asteroids
         {
             if (e.KeyCode == Keys.ControlKey)
             {
-                _bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 21), new Point(5, 0), new Size(54, 9));
+                _bullets.Add(new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 21), new Point(5, 0), new Size(54, 9)));
             }
             if (e.KeyCode == Keys.Up)
             {
@@ -78,14 +78,13 @@ namespace Asteroids
 
 
             foreach (var asteroid in _asteroids)
-                if (asteroid != null)
                     asteroid.Draw();
 
             foreach (var obj in _stars)
                 obj.Draw();
 
-            if (_bullet != null)
-                _bullet.Draw();
+            foreach(var boolet in _bullets)
+                boolet.Draw();
 
 
             if (_ship != null)
@@ -106,11 +105,13 @@ namespace Asteroids
             //_bullet = new Bullet(new Point(0, 200), new Point(5, 0), new Size(44, 10));
             
             var random = new Random();
-            _asteroids = new BaseObject[15];
-            for (int i = 0; i < _asteroids.Length; i++)
+           // _asteroids = new BaseObject[15];
+            for (int i = 0; i < 15; i++)
             {
                 var size = random.Next(15, 40);
-                _asteroids[i] = new Asteroid(new Point(0, i * 20), new Point(-i, -i), new Size(size, size));
+                //_asteroids[i] = new Asteroid(new Point(0, i * 20), new Point(-i, -i), new Size(size, size));
+                _asteroids.Add(new Asteroid(new Point(0, i * 20), new Point(-i, -i), new Size(size, size)));
+
             }
 
             _stars = new Star[20];
@@ -153,49 +154,82 @@ namespace Asteroids
 
         public void Update()
         {
-
-            for (int i = 0; i < _asteroids.Length; i++)
+            for (int i = _asteroids.Count - 1; i >= 0; i--)
             {
-                if (_asteroids[i] == null) continue;
-
-                _asteroids[i].Update();
-
-                if (_bullet != null && _bullet.Collision(_asteroids[i]))
+                if (_asteroids[i].Collision(_ship)) 
                 {
-                    System.Media.SystemSounds.Hand.Play();
-                    Debug.WriteLine($"{i} -> X:{_asteroids[i].Rect.X} Y:{_asteroids[i].Rect.Y}");
-                    _asteroids[i] = null;
-                    _bullet = null;
-                    continue;
-                }
-
-                if (_ship != null && _ship.Collision(_asteroids[i]))
-                {
-                    _ship.EnergyLow(random.Next(1, 10));
                     System.Media.SystemSounds.Asterisk.Play();
-
+                    _ship.EnergyLow(random.Next(1, 10));
+                    _asteroids.RemoveAt(i);
                     if (_ship.Energy <= 0)
-                        _ship.Die();
+                      _ship.Die();
                 }
+                else 
+                {
+                    for (int j = _bullets.Count - 1; j >= 0; j--) 
+                    {
+                        if (_asteroids[i].Collision(_bullets[j])) 
+                        {
+                            System.Media.SystemSounds.Hand.Play();
+                            _asteroids.RemoveAt(i);
+                            _bullets.RemoveAt(j);
+                            break;
+                        }
+                    }
+
+
+                }
+            }
+            
+
+            //for (int i = 0; i < _asteroids.Length; i++)
+            //{
+            //    if (_asteroids[i] == null) continue;
+
+            //    _asteroids[i].Update();
+
+            //    if (_bullet != null && _bullet.Collision(_asteroids[i]))
+            //    {
+            //        System.Media.SystemSounds.Hand.Play();
+            //        Debug.WriteLine($"{i} -> X:{_asteroids[i].Rect.X} Y:{_asteroids[i].Rect.Y}");
+            //        _asteroids[i] = null;
+            //        _bullet = null;
+            //        continue;
+            //    }
+
+            //    if (_ship != null && _ship.Collision(_asteroids[i]))
+            //    {
+            //        _ship.EnergyLow(random.Next(1, 10));
+            //        System.Media.SystemSounds.Asterisk.Play();
+
+            //        if (_ship.Energy <= 0)
+            //            _ship.Die();
+            //    }
 
                 //_ship.EnergyLow(random.Next(1, _asteroids[i].Rect.Width / 2));
                 
 
 
-            }
+            //}
 
 
 
             foreach (var obj in _stars)
                 obj.Update();
 
-            if (_bullet != null) 
-            {
-                _bullet.Update();
-                //if (_bullet.Rect.X > Width)
-                //    _bullet = null;
-            }
-                
+            foreach (var asteroid in _asteroids)
+                asteroid.Update();
+
+            foreach (var boolet in _bullets)
+                boolet.Update();
+
+            //if (_bullet != null) 
+            //{
+            //    _bullet.Update();
+            //    //if (_bullet.Rect.X > Width)
+            //    //    _bullet = null;
+            //}
+
         }
 
         private void Finish(object sender, EventArgs e)
